@@ -1,0 +1,277 @@
+import moviesdb from "../api/moviedb";
+
+export const trending = async () => {
+  let res = await moviesdb.get("/trending/all/week", {
+    params: { api_key: "c625140e19067452daf7cd175f3fe6be" },
+  });
+
+  let trendingList = res.data.results.slice(0, 5);
+  return trendingList;
+};
+
+export const trendingTvToday = async () => {
+  let res = await moviesdb.get("/trending/tv/day", {
+    params: { api_key: "c625140e19067452daf7cd175f3fe6be" },
+  });
+
+  let trendingList = res.data.results.slice(0, 5);
+  return trendingList;
+};
+
+export const trendingMoviesToday = async () => {
+  let res = await moviesdb.get("/trending/movie/day", {
+    params: { api_key: "c625140e19067452daf7cd175f3fe6be" },
+  });
+
+  let trendingList = res.data.results.slice(0, 5);
+  return trendingList;
+};
+
+export const popularNetflix = async () => {
+  let res = await moviesdb.get("/discover/tv", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_networks: 213,
+      "primary_release_date.lte": Date.now(),
+      "vote_count.gte": 60,
+    },
+  });
+
+  let popularNetflixList = res.data.results.slice(0, 5);
+  return popularNetflixList;
+};
+
+export const randomNetflixTitle = async () => {
+  let res = await moviesdb.get("/discover/tv", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_networks: 213,
+      "primary_release_date.lte": Date.now(),
+    },
+  });
+
+  let filteredSearch = res.data.results.filter((el) => {
+    return el.backdrop_path !== null && el.poster_path !== null;
+  });
+
+  let maxNum = filteredSearch.length;
+  let randomNum = Math.floor(Math.random() * maxNum);
+
+  return filteredSearch[randomNum];
+};
+
+export const randomTvShow = async () => {
+  let res = await moviesdb.get("/discover/tv", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      "primary_release_date.lte": Date.now(),
+    },
+  });
+
+  let filteredSearch = res.data.results.filter((el) => {
+    return el.backdrop_path !== null && el.poster_path !== null;
+  });
+
+  let maxNum = filteredSearch.length;
+  let randomNum = Math.floor(Math.random() * maxNum);
+
+  return filteredSearch[randomNum];
+};
+
+export const randomMovie = async () => {
+  let res = await moviesdb.get("/discover/movie", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      "primary_release_date.lte": Date.now(),
+    },
+  });
+
+  let filteredSearch = res.data.results.filter((el) => {
+    return el.backdrop_path !== null && el.poster_path !== null;
+  });
+
+  let maxNum = filteredSearch.length;
+  let randomNum = Math.floor(Math.random() * maxNum);
+
+  return filteredSearch[randomNum];
+};
+
+export const randomTrending = async () => {
+  let res = await moviesdb.get("/trending/all/week", {
+    params: { api_key: "c625140e19067452daf7cd175f3fe6be" },
+  });
+
+  let filteredSearch = res.data.results.filter((el) => {
+    return el.backdrop_path !== null && el.poster_path !== null;
+  });
+
+  let maxNum = filteredSearch.length;
+  let randomNum = Math.floor(Math.random() * maxNum);
+
+  return filteredSearch[randomNum];
+};
+
+export const topRatedMovies = async () => {
+  let res = await moviesdb.get("/movie/top_rated", {
+    params: { api_key: "c625140e19067452daf7cd175f3fe6be" },
+  });
+
+  let topRatedMovies = res.data.results.slice(0, 5);
+  return topRatedMovies;
+};
+
+export const newComedyMovies = async () => {
+  let res = await moviesdb.get("/discover/movie", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_genres: 35,
+      sort_by: "release_date.desc",
+      "primary_release_date.lte": Date.now(),
+      "vote_count.gte": 30,
+    },
+  });
+
+  let newComedyMovies = res.data.results.slice(0, 5);
+  return newComedyMovies;
+};
+
+export const newFantasyMovies = async () => {
+  let res = await moviesdb.get("/discover/movie", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_genres: 14,
+      sort_by: "release_date.desc",
+      "primary_release_date.lte": Date.now(),
+      "vote_count.gte": 30,
+    },
+  });
+
+  let newFantasyMovies = res.data.results.slice(0, 5);
+  return newFantasyMovies;
+};
+
+export const newCrimeMovies = async () => {
+  let res = await moviesdb.get("/discover/movie", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_genres: 80,
+      sort_by: "release_date.desc",
+      "primary_release_date.lte": Date.now(),
+      "vote_count.gte": 30,
+    },
+  });
+
+  let newCrimeMovies = res.data.results.slice(0, 5);
+  return newCrimeMovies;
+};
+
+export const newScifiMovies = async () => {
+  let res = await moviesdb.get("/discover/movie", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_genres: 878,
+      sort_by: "release_date.desc",
+      "primary_release_date.lte": Date.now(),
+      "vote_count.gte": 10,
+    },
+  });
+
+  let newScifiMovies = res.data.results.slice(0, 5);
+  return newScifiMovies;
+};
+
+export const newAnimationMovies = async () => {
+  let res = await moviesdb.get("/discover/movie", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_genres: 16,
+      sort_by: "release_date.desc",
+      "primary_release_date.lte": Date.now(),
+      "vote_count.gte": 10,
+    },
+  });
+
+  let newAnimationMovies = res.data.results.slice(0, 5);
+  return newAnimationMovies;
+};
+
+export const newComedyTvShows = async () => {
+  let res = await moviesdb.get("/discover/tv", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_genres: 35,
+      sort_by: "release_date.desc",
+      "primary_release_date.lte": Date.now(),
+      "vote_count.gte": 30,
+    },
+  });
+
+  let newComedyTvShows = res.data.results.slice(0, 5);
+  return newComedyTvShows;
+};
+
+export const newActionTvShows = async () => {
+  let res = await moviesdb.get("/discover/tv", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_genres: 28,
+      sort_by: "release_date.desc",
+      "primary_release_date.lte": Date.now(),
+      "vote_count.gte": 30,
+    },
+  });
+
+  let newActionTvShows = res.data.results.slice(0, 5);
+  return newActionTvShows;
+};
+
+export const newHorrorTvShows = async () => {
+  let res = await moviesdb.get("/discover/tv", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      with_genres: 27,
+      sort_by: "release_date.desc",
+      "primary_release_date.lte": Date.now(),
+      "vote_count.gte": 10,
+    },
+  });
+
+  let newHorrorTvShows = res.data.results.slice(0, 5);
+  return newHorrorTvShows;
+};
+
+export const upcomingTvShows = async () => {
+  let res = await moviesdb.get("/discover/tv", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      sort_by: "popularity.desc",
+      "first_air_date.gte": Date.now(),
+    },
+  });
+
+  let filteredSearch = res.data.results.filter((el) => {
+    return el.backdrop_path !== null && el.poster_path !== null;
+  });
+
+  let upcomingTvShows = filteredSearch.slice(0, 5);
+
+  return upcomingTvShows;
+};
+
+export const upcomingMovies = async () => {
+  let res = await moviesdb.get("/discover/movie", {
+    params: {
+      api_key: "c625140e19067452daf7cd175f3fe6be",
+      sort_by: "popularity.desc",
+      "primary_release_date.gte": Date.now(),
+    },
+  });
+
+  let filteredSearch = res.data.results.filter((el) => {
+    return el.backdrop_path !== null && el.poster_path !== null;
+  });
+
+  let upcomingMovies = filteredSearch.slice(0, 5);
+
+  return upcomingMovies;
+};

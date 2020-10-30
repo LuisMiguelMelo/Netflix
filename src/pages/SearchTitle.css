@@ -1,0 +1,169 @@
+.about__background {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  animation: .75s ease-in opacity;
+}
+
+.about__background img {
+  opacity: 0.1;
+  width: 100%;
+  height: 100%;
+}
+
+.about__title {
+  display: flex;
+  justify-content: center;
+  height: 70%;
+  animation: .75s ease-in opacity;
+}
+
+.about__title__poster {
+  width: 27%;
+}
+.about__title__poster img {
+  height: 100%;
+  width: 100%;
+}
+
+.about__title__description {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 2rem;
+  width: 40%;
+}
+
+.about__title__description * {
+  margin: 0 0 1rem 0;
+}
+
+.card__content__icons--result {
+  flex-direction: row;
+}
+
+.card__content__icons--result .card__icon {
+  padding: 1rem;
+  font-size: 3rem;
+}
+
+.card__content__icons--result .card__icon:first-child {
+  margin-right: 1rem;
+}
+
+.card__content__icons--result .card__icon i {
+  margin: 0;
+}
+
+.find__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  min-height: 100vh;
+}
+
+.show__original-title {
+  font-style: italic;
+  font-weight: 200;
+}
+
+.show__date {
+  margin-right: 1rem;
+}
+
+.show__dates {
+  font-size: 2rem;
+  flex-wrap: wrap;
+  display: flex;
+  width: 100%;
+}
+
+.show__overview {
+  font-size: 2rem;
+}
+
+.show__production--airing {
+  color: green;
+}
+
+.show__production--completed {
+  color: blue;
+}
+.show__title {
+  font-weight: 800;
+}
+
+.show__tagline {
+  font-style: italic;
+}
+
+.show__votes {
+  color: green;
+  display: flex;
+  width: 100%;
+  font-size: 2.5rem;
+}
+
+.show__vote-average {
+  margin-right: 1rem;
+}
+
+.show__vote-count {
+  color: white;
+}
+
+
+@media (max-width: 991.98px) {
+  .about__title {
+    height: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .about__title__description {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+  }
+  .about__title__poster {
+    max-height: 40%;
+    width: 60%;
+  }
+
+  .show__dates {
+    justify-content: center;
+  }
+
+  .show__votes {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about__background {
+    display: none;
+  }
+  
+  .about__title {
+    max-height: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .about__title__description {
+    width: 100%;
+  }
+  .about__title__poster {
+    width: 70%;
+  }
+  .find__title {
+    align-items: unset;
+  }
+}
