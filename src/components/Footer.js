@@ -12,6 +12,7 @@ const Footer = () => {
             style={{ color: "red", textDecoration: "none" }}
             href="https://musing-keller-2db33f.netlify.app"
             target="_blank"
+            rel="noopener noreferrer"
           >
             {" "}
             Luis Melo{" "}
